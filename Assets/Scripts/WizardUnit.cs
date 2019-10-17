@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WizardUnit : MonoBehaviour
+public class WizardUnit : Unit
 {
     // Start is called before the first frame update
     void Start()
