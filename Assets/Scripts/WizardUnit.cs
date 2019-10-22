@@ -7,12 +7,12 @@ public class WizardUnit : Unit
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        unitHP = 10;
+        unitMaxHP = unitHP;
+        unitAtk = 1;
+        unitRange = 2;
+        unitSpeed = 1;
+        unitTeam = 2;
+        GetComponent<MeshRenderer>().material = unitMat[unitTeam];
     }
 }

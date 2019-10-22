@@ -8,7 +8,7 @@ public class FactoryBuilding : Building
     // Start is called before the first frame update
     void Start()
     {
-        /*buildingHP = 10;
+        buildingHP = 10;
         buildingMaxHP = buildingHP;
         buildingTeam = Random.Range(0, 2);
         GetComponent<MeshRenderer>().material = buildingMat[buildingTeam];
@@ -21,7 +21,5 @@ public class FactoryBuilding : Building
                 gameObject.tag = "Team 2";
                 break;
         }
-
-        healthBar = GetComponentsInChildren<Image>()[1];*/
     }
 }

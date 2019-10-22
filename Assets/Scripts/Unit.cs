@@ -59,6 +59,9 @@ public class Unit : MonoBehaviour
             case 1:
                 units = GameObject.FindGameObjectsWithTag("Team 1");
                 break;
+            case 2:
+                units = GameObject.FindGameObjectsWithTag("Team 3");
+                break;
         }
 
         float distance = 9999;
