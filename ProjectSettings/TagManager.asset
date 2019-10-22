@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MeleeUnit
+  - RangedUnit
+  - WizardUnit
+  - Team 1
+  - Team 2
+  - Ground
   layers:
   - Default
   - TransparentFX
