@@ -10,6 +10,7 @@ TagManager:
   - Team 1
   - Team 2
   - Ground
+  - Team 3
   layers:
   - Default
   - TransparentFX

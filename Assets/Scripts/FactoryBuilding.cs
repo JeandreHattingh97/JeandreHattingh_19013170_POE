@@ -15,11 +15,12 @@ public class FactoryBuilding : Building
         switch (buildingTeam)
         {
             case 0:
-                gameObject.tag = "Team 1";
+                gameObject.tag = "BuildingTeam 1";
                 break;
             case 1:
-                gameObject.tag = "Team 2";
+                gameObject.tag = "BuildingTeam 2";
                 break;
         }
+
     }
 }

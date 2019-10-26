@@ -49,24 +49,52 @@ public class Unit : MonoBehaviour
     {
         GameObject unit = null;
 
-        GameObject[] units = null;
+        GameObject[] units01 = null;
+        GameObject[] units02 = null;
+        GameObject[] buildings = null;
 
         switch (unitTeam)
         {
             case 0:
-                units = GameObject.FindGameObjectsWithTag("Team 2");
+                units01 = GameObject.FindGameObjectsWithTag("Team 2");
+                units02 = GameObject.FindGameObjectsWithTag("Team 3");
+                buildings = GameObject.FindGameObjectsWithTag("BuildingTeam 2");
                 break;
             case 1:
-                units = GameObject.FindGameObjectsWithTag("Team 1");
+                units01 = GameObject.FindGameObjectsWithTag("Team 1");
+                units02 = GameObject.FindGameObjectsWithTag("Team 3");
+                buildings = GameObject.FindGameObjectsWithTag("BuildingTeam 1");
                 break;
             case 2:
-                units = GameObject.FindGameObjectsWithTag("Team 3");
+                units01 = GameObject.FindGameObjectsWithTag("Team 1");
+                units02 = GameObject.FindGameObjectsWithTag("Team 2");
+                buildings = GameObject.FindGameObjectsWithTag("Ground");
                 break;
         }
 
         float distance = 9999;
 
-        foreach (GameObject temp in units)
+        foreach (GameObject temp in units01)
+        {
+            float tempDist = Vector3.Distance(transform.position, temp.transform.position);
+            if (tempDist <= distance)
+            {
+                distance = tempDist;
+                unit = temp;
+            }
+        }
+
+        foreach (GameObject temp in units02)
+        {
+            float tempDist = Vector3.Distance(transform.position, temp.transform.position);
+            if (tempDist <= distance)
+            {
+                distance = tempDist;
+                unit = temp;
+            }
+        }
+
+        foreach (GameObject temp in buildings)
         {
             float tempDist = Vector3.Distance(transform.position, temp.transform.position);
             if (tempDist <= distance)
