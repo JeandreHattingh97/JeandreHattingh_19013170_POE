@@ -8,9 +8,9 @@ public class RangedUnit : Unit
     // Start is called before the first frame update
     void Start()
     {
-        unitHP = 10;
+        unitHP = 1000;
         unitMaxHP = unitHP;
-        unitAtk = 1;
+        unitAtk = 4;
         unitRange = 2;
         unitSpeed = 1;
         unitTeam = Random.Range(0, 2);

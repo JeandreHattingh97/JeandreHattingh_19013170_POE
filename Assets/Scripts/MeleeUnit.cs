@@ -8,9 +8,9 @@ public class MeleeUnit : Unit
     // Start is called before the first frame update
     void Start()
     {
-        unitHP = 10;
+        unitHP = 1000;
         unitMaxHP = unitHP;
-        unitAtk = 2;
+        unitAtk = 5;
         unitRange = 1;
         unitSpeed = 1;
         unitTeam = Random.Range(0, 2);

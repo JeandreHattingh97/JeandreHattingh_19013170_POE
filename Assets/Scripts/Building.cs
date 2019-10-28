@@ -24,6 +24,21 @@ public class Building : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Death() == true)
+        {
+            GameObject.Destroy(gameObject);
+        }
+    }
+
+    protected bool Death()
+    {
+        bool isDead = false;
+
+        if (this.Hp <= 0)
+        {
+            isDead = true;
+        }
+
+        return isDead;
     }
 }

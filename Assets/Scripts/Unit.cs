@@ -31,6 +31,9 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject[] enemyUnits01 = null;
+        GameObject[] enemyUnits02 = null;
+
         if (gameObject.tag != "Team 3")
         {
             if (!Death())
@@ -60,6 +63,59 @@ public class Unit : MonoBehaviour
                 GameObject.Destroy(gameObject);
             }
         }
+
+        if (gameObject.tag == "Team 3")
+        {
+            if (!Death())
+            {
+                if (this.Hp >= (0.25 * MaxHP))
+                {
+                    GameObject closestUNnit = GetClosestUnit();
+
+                    if (!IsInRange(GetClosestUnit()))
+                    {
+                        transform.position = Vector3.MoveTowards(transform.position, GetClosestUnit().transform.position, unitSpeed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        enemyUnits01 = GameObject.FindGameObjectsWithTag("Team 1");
+                        enemyUnits02 = GameObject.FindGameObjectsWithTag("Team 2");
+                        foreach (GameObject temp in enemyUnits01)
+                        {
+                            if (!temp.name.Contains("Building"))
+                            {
+                                if (IsInRange(temp))
+                                {
+                                    Attacking(temp);
+                                }
+                            }
+                        }
+
+                        foreach (GameObject temp in enemyUnits02)
+                        {
+                            if (!temp.name.Contains("Building"))
+                            {
+                                if (IsInRange(temp))
+                                {
+                                    Attacking(temp);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    GameObject runAway = new GameObject();
+                    runAway.transform.position = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+                    transform.position = Vector3.MoveTowards(transform.position, runAway.transform.position, Speed * Time.deltaTime);
+                }
+            }
+            else
+            {
+                GameObject.Destroy(gameObject);
+            }
+        }
+
         health.fillAmount = (float)this.Hp / MaxHP;
     }
 
