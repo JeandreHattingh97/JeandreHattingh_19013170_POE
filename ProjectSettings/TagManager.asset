@@ -11,6 +11,8 @@ TagManager:
   - Team 2
   - Ground
   - Team 3
+  - BuildingTeam 2
+  - BuildingTeam 1
   layers:
   - Default
   - TransparentFX

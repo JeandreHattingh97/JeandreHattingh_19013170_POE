@@ -20,6 +20,7 @@ public class Unit : MonoBehaviour
     public int Range { get => unitRange; }
     public int Team { get => unitTeam; }
 
+    protected Image health;
 
     // Start is called before the first frame update
     void Start()
@@ -30,10 +31,36 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!IsInRange(GetClosestUnit()))
+        if (gameObject.tag != "Team 3")
         {
-            transform.position = Vector3.MoveTowards(transform.position, GetClosestUnit().transform.position, unitSpeed * Time.deltaTime);
+            if (!Death())
+            {
+                if(this.Hp >= (0.25 * MaxHP))
+                {
+                    GameObject closestUNnit = GetClosestUnit();
+
+                    if (!IsInRange(GetClosestUnit()))
+                    {
+                        transform.position = Vector3.MoveTowards(transform.position, GetClosestUnit().transform.position, unitSpeed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        Attacking(closestUNnit);
+                    }
+                }
+                else
+                {
+                    GameObject runAway = new GameObject();
+                    runAway.transform.position = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+                    transform.position = Vector3.MoveTowards(transform.position, runAway.transform.position, Speed * Time.deltaTime);
+                }
+            }
+            else
+            {
+                GameObject.Destroy(gameObject);
+            }
         }
+        health.fillAmount = (float)this.Hp / MaxHP;
     }
 
 
@@ -105,5 +132,29 @@ public class Unit : MonoBehaviour
         }
 
         return unit;
+    }
+
+    protected void Attacking(GameObject enemy)
+    {
+        if (enemy.name.Contains("Unit"))
+        {
+            enemy.GetComponent<Unit>().Hp -= this.Atk;
+        }
+        else if (enemy.name.Contains("Building"))
+        {
+            enemy.GetComponent<Building>().Hp -= this.Atk;
+        }
+    }
+
+    protected bool Death()
+    {
+        bool isDead = false;
+
+        if(this.Hp <= 0)
+        {
+            isDead = true;
+        }
+
+        return isDead;
     }
 }
