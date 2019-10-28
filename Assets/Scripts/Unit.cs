@@ -40,7 +40,7 @@ public class Unit : MonoBehaviour
             {
                 if(this.Hp >= (0.25 * MaxHP))
                 {
-                    GameObject closestUNnit = GetClosestUnit();
+                    GameObject closestUnit = GetClosestUnit();
 
                     if (!IsInRange(GetClosestUnit()))
                     {
@@ -48,7 +48,7 @@ public class Unit : MonoBehaviour
                     }
                     else
                     {
-                        Attacking(closestUNnit);
+                        Attacking(closestUnit);
                     }
                 }
                 else
@@ -116,7 +116,8 @@ public class Unit : MonoBehaviour
             }
         }
 
-        
+        health.fillAmount = (float)this.Hp / MaxHP;
+
     }
 
 
@@ -201,7 +202,6 @@ public class Unit : MonoBehaviour
             enemy.GetComponent<Building>().Hp -= this.Atk;
         }
 
-        health.fillAmount = (float)this.Hp / MaxHP;
     }
 
     protected bool Death()

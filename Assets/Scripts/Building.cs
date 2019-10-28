@@ -25,7 +25,7 @@ public class Building : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        health.fillAmount = (float)this.buildingHP / buildingMaxHP;
+        health.fillAmount = (float)this.Hp / MaxHP;
 
         if (Death() == true)
         {
