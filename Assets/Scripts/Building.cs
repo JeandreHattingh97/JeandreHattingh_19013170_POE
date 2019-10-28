@@ -14,6 +14,7 @@ public class Building : MonoBehaviour
     public int MaxHP { get => buildingMaxHP; }
     public int Team { get => buildingTeam; }
 
+    protected Image health;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,8 @@ public class Building : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        health.fillAmount = (float)this.buildingHP / buildingMaxHP;
+
         if (Death() == true)
         {
             GameObject.Destroy(gameObject);

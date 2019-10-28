@@ -116,7 +116,7 @@ public class Unit : MonoBehaviour
             }
         }
 
-        health.fillAmount = (float)this.Hp / MaxHP;
+        
     }
 
 
@@ -200,6 +200,8 @@ public class Unit : MonoBehaviour
         {
             enemy.GetComponent<Building>().Hp -= this.Atk;
         }
+
+        health.fillAmount = (float)this.Hp / MaxHP;
     }
 
     protected bool Death()
